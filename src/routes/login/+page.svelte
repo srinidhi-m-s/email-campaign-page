@@ -53,7 +53,8 @@
             <Button class="w-full" on:click={handleLogin}>Login</Button>
             <div class="text-center text-sm">
               Don't have an account?
-              <a href="/signup" class="underline">Sign up</a>
+              <a href="/register" class="underline">Register</a>
+
             </div>
           </div>
         </CardContent>
