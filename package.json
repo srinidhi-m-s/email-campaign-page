@@ -1,5 +1,5 @@
 {
-	"name": "my-app",
+	"name": "email-campaign",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
@@ -13,6 +13,7 @@
 		"@sveltejs/adapter-auto": "^4.0.0",
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"@tailwindcss/postcss": "^4.0.9",
 		"autoprefixer": "^10.4.20",
 		"bits-ui": "^0.22.0",
 		"clsx": "^2.1.1",
@@ -20,8 +21,11 @@
 		"svelte": "^5.0.0",
 		"tailwind-merge": "^3.0.1",
 		"tailwind-variants": "^0.3.1",
-		"tailwindcss": "^3.4.17",
 		"tailwindcss-animate": "^1.0.7",
 		"vite": "^6.0.0"
+	},
+	"dependencies": {
+		"@tailwindcss/vite": "^4.0.9",
+		"tailwindcss": "^4.0.9"
 	}
 }

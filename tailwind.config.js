@@ -3,6 +3,8 @@ import tailwindcssAnimate from "tailwindcss-animate";
 
 /** @type {import('tailwindcss').Config} */
 const config = {
+	content: ["./src/**/*.{html,svelte,js,ts}"],
+	mode: "jit",
 	darkMode: ["class"],
 	content: ["./src/**/*.{html,js,svelte,ts}"],
 	safelist: ["dark"],
