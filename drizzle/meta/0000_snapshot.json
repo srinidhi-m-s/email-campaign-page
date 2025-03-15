@@ -1,0 +1,178 @@
+{
+  "id": "5b4f8592-cd37-4d0f-b498-69d31c3b0724",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.brands": {
+      "name": "brands",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "from_name": {
+          "name": "from_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "from_email": {
+          "name": "from_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "to_email": {
+          "name": "to_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "smtp_provider": {
+          "name": "smtp_provider",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "smtp_region": {
+          "name": "smtp_region",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "smtp_access_key": {
+          "name": "smtp_access_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "smtp_secret_key": {
+          "name": "smtp_secret_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "smtp_host": {
+          "name": "smtp_host",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "smtp_port": {
+          "name": "smtp_port",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "smtp_ssl": {
+          "name": "smtp_ssl",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "smtp_username": {
+          "name": "smtp_username",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "smtp_password": {
+          "name": "smtp_password",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "smtp_type": {
+          "name": "smtp_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "smtp_limit_hourly": {
+          "name": "smtp_limit_hourly",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "smtp_limit_daily": {
+          "name": "smtp_limit_daily",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "smtp_limit_monthly": {
+          "name": "smtp_limit_monthly",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "track_opening": {
+          "name": "track_opening",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "track_clicks": {
+          "name": "track_clicks",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "max_bounce": {
+          "name": "max_bounce",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gdpr": {
+          "name": "gdpr",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'no'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

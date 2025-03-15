@@ -1,0 +1,28 @@
+import { pgTable, serial, text, integer, timestamp } from 'drizzle-orm/pg-core';
+
+export const brands = pgTable('brands', {
+  id: serial('id').primaryKey(),
+  name: text('name').notNull(),
+  description: text('description'),
+  fromName: text('from_name').notNull(),
+  fromEmail: text('from_email').notNull(),
+  toEmail: text('to_email').notNull(),
+  smtpProvider: text('smtp_provider').notNull(),
+  smtpRegion: text('smtp_region'),
+  smtpAccessKey: text('smtp_access_key'),
+  smtpSecretKey: text('smtp_secret_key'),
+  smtpHost: text('smtp_host'),
+  smtpPort: integer('smtp_port'),
+  smtpSSL: text('smtp_ssl'),
+  smtpUsername: text('smtp_username'),
+  smtpPassword: text('smtp_password'),
+  smtpType: text('smtp_type'),
+  smtpLimitHourly: integer('smtp_limit_hourly'),
+  smtpLimitDaily: integer('smtp_limit_daily'),
+  smtpLimitMonthly: integer('smtp_limit_monthly'),
+  trackOpening: text('track_opening'),
+  trackClicks: text('track_clicks'),
+  maxBounce: integer('max_bounce'),
+  gdpr: text('gdpr').default('no'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
