@@ -7,7 +7,9 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"prepare": "svelte-kit sync || echo ''"
+		"prepare": "svelte-kit sync || echo ''",
+		"drizzle:generate": "drizzle-kit generate",
+  		"drizzle:migrate": "drizzle-kit push"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^4.0.0",
