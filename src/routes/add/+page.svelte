@@ -1,7 +1,6 @@
 <script>
     import { onMount } from 'svelte';
     import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '$lib/components/ui/accordion';
-    import { Button } from '$lib/components/ui/button';
     import { Input } from '$lib/components/ui/input';
     import { Textarea } from '$lib/components/ui/textarea';
     import { Label } from '$lib/components/ui/label';
@@ -21,7 +20,7 @@
         smtpAccessKey: '',
         smtpSecretKey: '',
         smtpHost: '',
-        smtpPort: '',
+        smtpPort: '0',
         smtpSSL: '',
         smtpUsername: '',
         smtpPassword: '',
@@ -64,7 +63,7 @@
     
 
     async function handleSubmit() {      
-        const validSmtpPorts = [25, 465, 587, 2525];
+        const validSmtpPorts = [0,25, 465, 587, 2525];
         const smtpPort = parseInt(brands.smtpPort);
         if (!validSmtpPorts.includes(smtpPort)) {
             alert("enter valid SMTP Port");

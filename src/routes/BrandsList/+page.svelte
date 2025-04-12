@@ -83,7 +83,11 @@
                     {#if brand.name.toLowerCase().includes(searchQuery.toLowerCase()) || searchQuery === ""}
                         <tr class="border-t border-gray-200 hover:bg-muted/50">
                             <td class="py-3 px-4">{index +1}</td>
-                            <td class="py-3 px-4 font-medium">{brand.name}</td>
+                            <td>
+                                <a href={`/BrandsList/${brand.id}/campaigns`} class="py-3 px-4 underline">
+                                  {brand.name}
+                                </a>
+                            </td>
                             <td class="py-3 px-4">{brand.smtpProvider}</td>
                             <td class="py-3 px-4">{brand.limit || 0}</td>
                             <td class="py-3 px-4">{brand.used || 0}</td>

@@ -8,7 +8,7 @@ export async function POST({ request }) {
     // Format data before inserting
     const formattedData = {
       ...data,
-      smtpPort,
+      
     };
     await db.insert(brands).values(formattedData);
     return new Response(JSON.stringify({ message: 'Brand saved successfully' }), {
