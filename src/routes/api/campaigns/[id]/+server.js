@@ -20,11 +20,44 @@ export async function PUT({ params, request }) {
     const id = parseInt(params.id);
     console.log("Updating campaign with ID:", id);
   
-    let updatedData = await request.json();
-    updatedData.updatedAt = new Date();
-    if (updatedData.createdAt && typeof updatedData.createdAt === 'string') {
-      updatedData.createdAt = new Date(updatedData.createdAt);
+    let body = {};
+    try {
+      body = await request.json();
+    } catch (err) {
+      console.warn('No JSON body provided or invalid JSON:', err);
     }
+
+    if ('isArchived' in body) {
+      try {
+        const result = await db
+          .update(campaigns)
+          .set({
+            isArchived: body.isArchived,
+            updatedAt: new Date()
+          })
+          .where(eq(campaigns.id, id))
+          .returning();
+  
+        return json({ message: 'Campaign archived successfully', campaign: result[0] }, { status: 200 });
+      } catch (err) {
+        console.error("Error archiving campaign:", err);
+        return json({ error: 'Failed to archive campaign' }, { status: 500 });
+      }
+    }
+
+    const updatedData = {
+      name: body.name,
+      fromName: body.fromName,
+      fromEmail: body.fromEmail,
+      replyToEmail: body.replyToEmail,
+      mailContent: body.mailContent,
+      totalRecipients: body.totalRecipients,
+      totalSent: body.totalSent,
+      totalOpened: body.totalOpened,
+      totalClicked: body.totalClicked,
+      updatedAt: new Date()
+    };
+    
   
     try {
       const updatedCampaign = await db

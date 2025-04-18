@@ -33,8 +33,9 @@
     try {
       const brandRes = await fetch(`/api/brands/${brandId}`);
       if (brandRes.ok) {
-        const brandData = await brandRes.json();
-        brandName = brandData[0]?.name ?? '';
+        const { name } = (await res.json())[0] || {};
+        brandName = name ?? '';
+        
       }
     } catch (e) {
       console.error('Error fetching brand name:', e);
@@ -57,8 +58,9 @@
   function validateForm() {
     if (!campaign.name || !campaign.fromName || !campaign.fromEmail || !campaign.replyToEmail || !campaign.mailContent) {
       alert('All fields are required');
-      
+      return false;      
     }
+    else return true;
   }
 
   async function handleSubmit() {

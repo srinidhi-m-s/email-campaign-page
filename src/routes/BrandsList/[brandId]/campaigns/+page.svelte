@@ -40,6 +40,26 @@
   function handleAddCampaign() {
     goto(`/BrandsList/${brandId}/campaigns/add`);
   }
+  async function archiveCampaign(id) {
+    if (!confirm('Are you sure you want to archive this campaign?')) return;
+
+    try {
+      const res = await fetch(`/api/campaigns/${brandId}`, {
+        method: 'PUT',
+        body: JSON.stringify({ isArchived: true })
+      });
+
+      if (res.ok) {
+        alert('archived!');
+        campaigns = campaigns.filter(c => c.id !== id);
+      } else {
+        alert('Failed to archive campaign');
+      }
+    } catch (err) {
+      console.error('Error archiving campaign:', err);
+      alert('An error occurred while archiving.');
+    }
+  }
 </script>
 
 <div class="flex items-center justify-center min-h-screen p-6">
@@ -92,7 +112,15 @@
                   <Pencil size={18} />
                 </button>
               </TableCell>
-              <TableCell><Trash2 class="cursor-pointer" /></TableCell>
+              <TableCell>
+                <button
+                  class="p-2 text-gray-600 hover:text-destructive rounded-md hover:bg-muted transition-colors"
+                  on:click={() => archiveCampaign(campaign.id)}
+                  aria-label="Archive campaign"
+                >
+                  <Trash2 size={18} />
+                </button>
+              </TableCell>
             </TableRow>
           {/if}
         {/each}

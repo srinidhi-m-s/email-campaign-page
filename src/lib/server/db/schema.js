@@ -1,4 +1,4 @@
-import { pgTable,varchar,serial, text, integer, timestamp } from 'drizzle-orm/pg-core';
+import { pgTable,varchar,serial, text,boolean, integer, timestamp } from 'drizzle-orm/pg-core';
 export const brands = pgTable('brands', {
   id: serial('id').primaryKey(),
   name: varchar('name', { length: 50 }).notNull(),
@@ -27,22 +27,18 @@ export const brands = pgTable('brands', {
 
 export const campaigns = pgTable('campaigns', {
   id: serial('id').primaryKey(),
-
-  // Visible Fields on Add Page
-  name: varchar('name', { length: 50 }).notNull(),            // Campaign Name
-  fromName: varchar('from_name', { length: 100 }),            // From Name
-  fromEmail: varchar('from_email', { length: 200 }),          // From Email
-  replyToEmail: varchar('reply_to_email', { length: 200 }),   // Reply to Email
-  mailContent: text('mail_content'),                          // Mail Content (BLOB in text for 5MB limit)
-
-  brandId: integer('brand_id').notNull(),                     // Foreign key reference
-
-  // Hidden fields, shown only in backend or campaign list
-  totalRecipients: integer('total_recipients').default(0),    // Show on front page only
+  name: varchar('name', { length: 50 }).notNull(),         
+  fromName: varchar('from_name', { length: 100 }),           
+  fromEmail: varchar('from_email', { length: 200 }),         
+  replyToEmail: varchar('reply_to_email', { length: 200 }),  
+  mailContent: text('mail_content'),                    
+  brandId: integer('brand_id').notNull(),                  
+  
+  totalRecipients: integer('total_recipients').default(0),   
   totalSent: integer('total_sent').default(0),
   totalOpened: integer('total_opened').default(0),
   totalClicked: integer('total_clicked').default(0),
-
   createdAt: timestamp('created_at').defaultNow(),
-  updatedAt: timestamp('updated_at').defaultNow()
+  updatedAt: timestamp('updated_at').defaultNow(),
+  isArchived: boolean('is_archived').default(false)
 });

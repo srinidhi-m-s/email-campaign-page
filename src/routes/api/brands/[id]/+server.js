@@ -23,12 +23,35 @@ export async function PUT({ params, request }) {
     const id = parseInt(params.id);
     console.log("Updating brand with ID:", id);
 
-    let updatedData = await request.json();
+    let data = await request.json();
     
-    // Ensure createdAt is a Date object
-    if (updatedData.createdAt && typeof updatedData.createdAt === "string") {
-        updatedData.createdAt = new Date(updatedData.createdAt);
-    }
+    const updatedData = {
+        name: data.name,
+        description: data.description,
+        fromName: data.fromName,
+        fromEmail: data.fromEmail,
+        toEmail: data.toEmail,
+        smtpProvider: data.smtpProvider,
+        smtpRegion: data.smtpRegion,
+        smtpAccessKey: data.smtpAccessKey,
+        smtpSecretKey: data.smtpSecretKey,
+        smtpHost: data.smtpHost,
+        smtpPort: data.smtpPort ? parseInt(data.smtpPort) : null,
+        smtpSSL: data.smtpSSL,
+        smtpUsername: data.smtpUsername,
+        smtpPassword: data.smtpPassword,
+        smtpType: data.smtpType,
+        smtpLimitHourly: data.smtpLimitHourly ? parseInt(data.smtpLimitHourly) : null,
+        smtpLimitDaily: data.smtpLimitDaily ? parseInt(data.smtpLimitDaily) : null,
+        smtpLimitMonthly: data.smtpLimitMonthly ? parseInt(data.smtpLimitMonthly) : null,
+        trackOpening: data.trackOpening,
+        trackClicks: data.trackClicks,
+        maxBounce: data.maxBounce ? parseInt(data.maxBounce) : null,
+        gdpr: data.gdpr,
+        trackLinkClicks: data.trackLinkClicks,
+        updatedAt: new Date() 
+    };
+    
     try {
         const updatedBrand = await db.update(brands)
             .set(updatedData)
